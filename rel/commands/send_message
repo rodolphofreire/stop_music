@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "$@" | socat - UNIX-SENDTO:/tmp/stopmusicsockin

@@ -4,7 +4,7 @@ defmodule StopMusic.Worker do
   use GenServer
 
   def start_link(serial_name) do
-    GenServer.start_link(__MODULE__, serial_name)
+    GenServer.start_link(__MODULE__, serial_name, name: __MODULE__)
   end
 
   def is_muted() do
@@ -27,6 +27,7 @@ defmodule StopMusic.Worker do
   end
 
   def handle_cast({:message, message}, %{pid: pid} = state) do
+    Circuits.UART.write(pid, message)
     {:noreply, state}
   end
 

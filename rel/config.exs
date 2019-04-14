@@ -31,13 +31,13 @@ environment :dev do
   # dev mode.
   set dev_mode: true
   set include_erts: false
-  set cookie: :"^e9O)F*9c~ZcY[@T&KX?}e6xo~;tP(O&=k^QG|Z@Cw7QG:|*_wx0.3bc|vskmCI?"
+  set cookie: :"simple_cookie"
 end
 
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"?ZW!x&G&<C%v)4i7@A=y;T=?tllzRq>fuE=wt_a,*X^|@1GdspWy0d)CEklb:<lq"
+  set cookie: :"simple_cookie"
   set vm_args: "rel/vm.args"
 end
 
@@ -50,6 +50,11 @@ release :stop_music do
   set version: current_version(:stop_music)
   set applications: [
     :runtime_tools
+  ]
+  set commands: [
+    send_message: "rel/commands/send_message",
+    off: "rel/commands/off",
+    on: "rel/commands/on"
   ]
 end
 

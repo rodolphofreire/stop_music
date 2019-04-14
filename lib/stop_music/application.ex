@@ -8,7 +8,8 @@ defmodule StopMusic.Application do
   def start(_type, _args) do
     # List all child processes to be supervised
     children = [
-      #{StopMusic.Worker, "/dev/cu.HC-05-SPPDev"},
+      {StopMusic.Listener, 0},
+      {StopMusic.Worker, "/dev/cu.HC-05-SPPDev"}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

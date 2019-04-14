@@ -20,6 +20,7 @@
 
 bool is_Stopped = false;
 bool is_Holding = false;
+bool is_suspended = false;
 
 Ultrasonic ultrasonic(pino_trigger, pino_echo);
 SoftwareSerial bluetooth(bt_tx, bt_rx);
@@ -38,7 +39,7 @@ void loop() {
   long microsec = ultrasonic.timing();
   cm_msec = ultrasonic.convert(microsec, Ultrasonic::CM);
   if(cm_msec <= wake_up_distance && is_Holding==false) {
-    is_Stopped = !is_Stopped;
+    is_Stopped = !is_Stopped && !is_suspended;
     is_Holding = true; 
   } else if (cm_msec > wake_up_distance) {
     is_Holding = false;
@@ -62,12 +63,18 @@ void loop() {
     String readString = "";
     while (bluetooth.available() > 0) {
       char c = bluetooth.read();
-      readString += c;
+      if( c >= 32 && c <= 126){
+        readString += c;
+      }
     }
-    if( readString == "STOP" ){
-      
+    if( readString == "CMD:ON" ){
+      is_suspended = false;
+    }else if( readString == "CMD:OFF" ){
+      is_suspended = true;
+    }else{
+      lcd.print(readString);
     }
-    lcd.print(readString);
+    
   }
  
   delay(600);

@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo "off" | socat - UNIX-SENDTO:/tmp/stopmusicsockin
