@@ -1,0 +1,24 @@
+
+=====
+===== LOGGING STARTED Sat Apr 13 17:43:42 -03 2019
+=====
+Erlang/OTP 19 [erts-8.3.5.4] [source] [64-bit] [smp:4:4] [async-threads:10] [hipe] [kernel-poll:false]
+
+
+17:43:47.503 [error] GenServer #PID<0.731.0> terminating
+** (stop) :port_timed_out
+    (circuits_uart) lib/circuits_uart.ex:554: Circuits.UART.call_port/4
+    (circuits_uart) lib/circuits_uart.ex:350: Circuits.UART.handle_call/3
+    (stdlib) gen_server.erl:615: :gen_server.try_handle_call/4
+    (stdlib) gen_server.erl:647: :gen_server.handle_msg/5
+    (stdlib) proc_lib.erl:247: :proc_lib.init_p_do_apply/3
+Last message: {:open, "/dev/cu.HC-05-SPPDev", [speed: 115200, active: true]}
+State: %Circuits.UART.State{controlling_process: nil, framing: Circuits.UART.Framing.None, framing_state: nil, id: :name, is_active: true, name: :closed, port: #Port<0.2012>, queued_messages: [], rx_framing_timeout: 0, rx_framing_tref: nil} 
+
+17:43:47.504 [info]  Application stop_music exited: StopMusic.Application.start(:normal, []) returned an error: shutdown: failed to start child: StopMusic.Worker
+    ** (EXIT) :port_timed_out
+{"Kernel pid terminated",application_controller,"{application_start_failure,stop_music,{{shutdown,{failed_to_start_child,'Elixir.StopMusic.Worker',port_timed_out}},{'Elixir.StopMusic.Application',start,[normal,[]]}}}"}
+Kernel pid terminated (application_controller) ({application_start_failure,stop_music,{{shutdown,{failed_to_start_child,'Elixir.StopMusic.Worker',port_timed_out}},{'Elixir.StopMusic.Application',start
+
+Crash dump is being written to: erl_crash.dump...circuits_uart: write: Broken pipe
+done

@@ -1,0 +1,8 @@
+run_erl [30638] Sat Apr 13 17:43:42 2019
+Args before exec of shell:
+run_erl [30638] Sat Apr 13 17:43:42 2019
+argv[0] = sh
+run_erl [30638] Sat Apr 13 17:43:42 2019
+argv[1] = -c
+run_erl [30638] Sat Apr 13 17:43:42 2019
+argv[2] = exec "/Users/rodolpho.freire/labs/Functional/elixir/stop_music/tmp/stop_music/bin/stop_music" "console" --  
